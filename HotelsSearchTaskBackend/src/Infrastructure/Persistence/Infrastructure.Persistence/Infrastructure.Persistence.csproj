@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\" />
     <Folder Include="FluentApiConfigurations\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
