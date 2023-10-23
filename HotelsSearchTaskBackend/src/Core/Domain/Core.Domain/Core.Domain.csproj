@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Repositories\" />
-    <Folder Include="Contracts\Services\" />
     <Folder Include="Dtos\" />
-    <Folder Include="Entities\" />
     <Folder Include="Enums\" />
   </ItemGroup>
 
