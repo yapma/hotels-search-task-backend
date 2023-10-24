@@ -30,6 +30,7 @@ namespace Infrastructure.Persistence.Extentions
 
             // add services
             services.AddScoped<ILogsRepository, LogsRepository>();
+            services.AddScoped<IHotelsRepository, HotelsRepository>();
         }
     }
 }

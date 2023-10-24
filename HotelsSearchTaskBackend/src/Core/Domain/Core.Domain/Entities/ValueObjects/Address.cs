@@ -26,17 +26,17 @@ namespace Core.Domain.Entities.ValueObjects
             return $"{address.Country} - {address.State} - {address.City}";
         }
 
-        public static bool operator ==(Address address1, Address address2)
-        {
-            return address1.Country == address2.Country &&
-                address1.State == address2.State &&
-                address1.City == address2.City;
-        }
-        public static bool operator !=(Address address1, Address address2)
-        {
-            return address1.Country != address2.Country ||
-                address1.State != address2.State ||
-                address1.City != address2.City;
-        }
+        //public static bool operator ==(Address address1, Address address2)
+        //{
+        //    return address1.Country == address2.Country &&
+        //        address1.State == address2.State &&
+        //        address1.City == address2.City;
+        //}
+        //public static bool operator !=(Address address1, Address address2)
+        //{
+        //    return address1.Country != address2.Country ||
+        //        address1.State != address2.State ||
+        //        address1.City != address2.City;
+        //}
     }
 }

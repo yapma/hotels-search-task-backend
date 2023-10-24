@@ -1,4 +1,5 @@
-﻿using Core.Domain.Dtos.Hotel;
+﻿using Ardalis.Result;
+using Core.Domain.Dtos.Hotel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Core.Domain.Contracts.Services
 {
     public interface IHotelsService
     {
-        Task Register(RegisterHotelRequestDto hotel);
-        Task Update(UpdateHotelRequestDto hotel);
-        Task Delete(int id);
-        Task<List<GetHotelResponseDto>> Get(int id = default, string? title = default);
-        Task<GetHotelResponseDto> GetById(int id);
+        Task<Result> Register(RegisterHotelRequestDto hotel);
+        Task<Result> Update(UpdateHotelRequestDto hotel);
+        Task<Result> Delete(int id);
+        Task<Result<List<GetHotelResponseDto>>> Get(int id = default, string? title = default);
+        Task<Result<GetHotelResponseDto>> GetById(int id);
     }
 }
