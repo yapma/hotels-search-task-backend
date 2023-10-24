@@ -11,8 +11,8 @@ namespace Core.Domain.Contracts.Repositories
     {
         Task Register(Hotel hotel);
         Task Update(Hotel hotel);
-        Task Delete(int id);
-        Task<List<Hotel>> Get(int id = default, string? title = default);
+        Task Delete(Hotel hotel);
+        Task<List<Hotel>> Get(int id = default, string? name = default);
         Task<Hotel> GetById(int id);
     }
 }

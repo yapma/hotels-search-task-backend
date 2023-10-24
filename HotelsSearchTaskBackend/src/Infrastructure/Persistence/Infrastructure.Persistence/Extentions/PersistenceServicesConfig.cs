@@ -18,6 +18,11 @@ namespace Infrastructure.Persistence.Extentions
         public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             // config of ef-core
+            services.AddDbContext<HotelsManagementContext>(config =>
+            {
+                config.UseSqlServer(configuration.GetConnectionString("MainConnection"));
+            });
+
             services.AddDbContext<LogDbContext>(config =>
             {
                 config.UseSqlServer(configuration.GetConnectionString("LogConnection"));

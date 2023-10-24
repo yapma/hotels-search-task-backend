@@ -20,8 +20,4 @@
     <ProjectReference Include="..\..\..\Core\Domain\Core.Domain\Core.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FluentApiConfigurations\" />
-  </ItemGroup>
-
 </Project>
