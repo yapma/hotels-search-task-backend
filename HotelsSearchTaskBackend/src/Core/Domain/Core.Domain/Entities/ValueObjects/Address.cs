@@ -12,7 +12,7 @@ namespace Core.Domain.Entities.ValueObjects
         public string State { get; private set; }
         public string City { get; private set; }
 
-        private Address() { }
+        public Address() { }
 
         public Address(int country, string state, string city)
         {
