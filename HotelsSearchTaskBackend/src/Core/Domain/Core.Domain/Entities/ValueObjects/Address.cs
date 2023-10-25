@@ -12,11 +12,11 @@ namespace Core.Domain.Entities.ValueObjects
         public string State { get; private set; }
         public string City { get; private set; }
 
-        public Address() { }
+        private Address() { }
 
-        public Address(int country, string state, string city)
+        public Address(string country, string state, string city)
         {
-            Country = Country;
+            Country = country;
             State = state;
             City = city;
         }

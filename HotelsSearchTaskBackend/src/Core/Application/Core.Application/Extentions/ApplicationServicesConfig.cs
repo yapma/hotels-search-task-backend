@@ -3,6 +3,7 @@ using Core.Application.Services.Hotels;
 using Core.Domain.Contracts.Services;
 using Core.Domain.Dtos.Hotel;
 using Core.Domain.Entities;
+using Core.Domain.Entities.ValueObjects;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -32,14 +33,16 @@ namespace Core.Application.Extentions
                 .Map(dest => dest.City, src => src.Address.City);
 
             TypeAdapterConfig.GlobalSettings.NewConfig<RegisterHotelRequestDto, Hotel>()
-                .Map(dest => dest.Address.Country, src => src.Country)
-                .Map(dest => dest.Address.State, src => src.State)
-                .Map(dest => dest.Address.City, src => src.City);
+                .AfterMapping((src, dest) =>
+                {
+                    dest.Address = new Address(src.Country, src.State, src.City);
+                });
 
             TypeAdapterConfig.GlobalSettings.NewConfig<UpdateHotelRequestDto, Hotel>()
-                .Map(dest => dest.Address.Country, src => src.Country)
-                .Map(dest => dest.Address.State, src => src.State)
-                .Map(dest => dest.Address.City, src => src.City);
+               .AfterMapping((src, dest) =>
+               {
+                   dest.Address = new Address(src.Country, src.State, src.City);
+               });
         }
     }
 }

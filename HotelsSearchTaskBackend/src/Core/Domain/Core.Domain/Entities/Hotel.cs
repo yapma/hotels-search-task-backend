@@ -20,7 +20,7 @@ namespace Core.Domain.Entities
             get { return _starsCount; }
             set
             {
-                if (value > 5)
+                if (value > 5 || value < 0)
                     throw new ArgumentException("Invalid Star Count.");
                 _starsCount = value;
             }

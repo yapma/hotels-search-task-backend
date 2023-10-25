@@ -41,12 +41,14 @@ namespace Infrastructure.Persistence.Repositories
         {
             return await _context.Hotels
                 .Where(x => (id == 0 || x.Id == id) && (string.IsNullOrEmpty(name) || x.Name.Contains(name)))
+                .AsNoTracking()
                 .ToListAsync();
         }
 
         public async Task<Hotel> GetById(int id)
         {
             return await _context.Hotels.Where(x => x.Id == id)
+                .AsNoTracking()
                 .FirstOrDefaultAsync();
         }
     }

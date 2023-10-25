@@ -26,7 +26,7 @@ namespace Core.Application.Services.Hotels
         {
             var hotel = await _hotelsRepository.GetById(id);
             if (hotel == null)
-                return Result.NotFound(Messages.HOTEL_NOT_FOUND);
+                return Result.Invalid(new List<ValidationError>() { new ValidationError() { ErrorMessage = Messages.HOTEL_NOT_FOUND, Identifier = StaticParams.RESULT_ERROR_KEY } });
             await _hotelsRepository.Delete(hotel);
             return Result.Success();
         }
@@ -35,7 +35,7 @@ namespace Core.Application.Services.Hotels
         {
             var hotels = await _hotelsRepository.Get(id, title);
             if (hotels == null || hotels.Count == 0)
-                return Result.NotFound(Messages.HOTEL_NOT_FOUND);
+                return Result.Invalid(new List<ValidationError>() { new ValidationError() { ErrorMessage = Messages.HOTEL_NOT_FOUND, Identifier = StaticParams.RESULT_ERROR_KEY } });
 
             return Result.Success(
                  hotels.Select(x => x.Adapt<GetHotelResponseDto>())
@@ -47,7 +47,7 @@ namespace Core.Application.Services.Hotels
         {
             var hotel = await _hotelsRepository.GetById(id);
             if (hotel == null)
-                return Result.NotFound(Messages.HOTEL_NOT_FOUND);
+                return Result.Invalid(new List<ValidationError>() { new ValidationError() { ErrorMessage = Messages.HOTEL_NOT_FOUND, Identifier = StaticParams.RESULT_ERROR_KEY } });
             return Result.Success(hotel.Adapt<GetHotelResponseDto>());
         }
 
@@ -57,9 +57,12 @@ namespace Core.Application.Services.Hotels
             return Result.Success();
         }
 
-        public async Task<Result> Update(UpdateHotelRequestDto hotel)
+        public async Task<Result> Update(UpdateHotelRequestDto hotelDto)
         {
-            await _hotelsRepository.Update(hotel.Adapt<Hotel>());
+            var hotel = await _hotelsRepository.GetById(hotelDto.Id);
+            if (hotel == null)
+                return Result.Invalid(new List<ValidationError>() { new ValidationError() { ErrorMessage = Messages.HOTEL_NOT_FOUND, Identifier = StaticParams.RESULT_ERROR_KEY } });
+            await _hotelsRepository.Update(hotelDto.Adapt<Hotel>());
             return Result.Success();
         }
     }

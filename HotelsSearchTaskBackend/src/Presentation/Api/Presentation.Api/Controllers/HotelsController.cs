@@ -20,7 +20,7 @@ namespace Presentation.Api.Controllers
 
         [HttpGet("GetHotels")]
         [TranslateResultToActionResult]
-        [ExpectedFailures(ResultStatus.NotFound)]
+        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
         public async Task<Result<List<GetHotelResponseDto>>> GetHotels([FromQuery] int id = 0, [FromQuery] string? title = null)
         {
             var generalBooks = await _hotelsService.Get(id, title);
@@ -29,6 +29,7 @@ namespace Presentation.Api.Controllers
 
         [HttpPost("RegisterHotel")]
         [TranslateResultToActionResult]
+        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
         public async Task<Result> RegisterHotel(RegisterHotelRequestDto model)
         {
             return await _hotelsService.Register(model);
@@ -36,6 +37,7 @@ namespace Presentation.Api.Controllers
 
         [HttpPost("UpdateHotel")]
         [TranslateResultToActionResult]
+        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
         public async Task<Result> UpdateHotel(UpdateHotelRequestDto model)
         {
             return await _hotelsService.Update(model);
@@ -43,6 +45,7 @@ namespace Presentation.Api.Controllers
 
         [HttpDelete("DeleteHotel")]
         [TranslateResultToActionResult]
+        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
         public async Task<Result> DeleteHotel(int id)
         {
             return await _hotelsService.Delete(id);
