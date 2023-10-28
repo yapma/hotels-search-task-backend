@@ -21,7 +21,8 @@ To get started based on this repository, you need to get a copy locally. You hav
 - [EF Core 6]
 - [Mapster]
 - [Result]
-
+- [xUnit]
+- [Moq]
 
 
    [Clean Architecture]: <https://blog.cleancoder.com/uncle-bob/2011/11/22/Clean-Architecture.html>
@@ -33,3 +34,4 @@ To get started based on this repository, you need to get a copy locally. You hav
    [Moq]: <https://github.com/devlooped/moq>
    [MIT license]: <https://github.com/yapma/clean-architecture/blob/main/LICENSE>
    [the project based on Angular]: <https://github.com/yapma/hotels-search-task-frontend>
+   
