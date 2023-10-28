@@ -57,11 +57,12 @@ namespace Core.Application.Services.Hotels
             return Result.Success();
         }
 
-        public async Task<Result> Update(UpdateHotelRequestDto hotelDto)
+        public async Task<Result> Update(int id, UpdateHotelRequestDto hotelDto)
         {
-            var hotel = await _hotelsRepository.GetById(hotelDto.Id);
+            var hotel = await _hotelsRepository.GetById(id);
             if (hotel == null)
                 return Result.Invalid(new List<ValidationError>() { new ValidationError() { ErrorMessage = Messages.HOTEL_NOT_FOUND, Identifier = StaticParams.RESULT_ERROR_KEY } });
+            hotelDto.Id = id;
             await _hotelsRepository.Update(hotelDto.Adapt<Hotel>());
             return Result.Success();
         }

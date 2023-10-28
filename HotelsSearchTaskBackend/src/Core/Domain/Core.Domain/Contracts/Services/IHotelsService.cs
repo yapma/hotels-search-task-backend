@@ -11,7 +11,7 @@ namespace Core.Domain.Contracts.Services
     public interface IHotelsService
     {
         Task<Result> Register(RegisterHotelRequestDto hotel);
-        Task<Result> Update(UpdateHotelRequestDto hotel);
+        Task<Result> Update(int id, UpdateHotelRequestDto hotel);
         Task<Result> Delete(int id);
         Task<Result<List<GetHotelResponseDto>>> Get(int id = default, string? title = default);
         Task<Result<GetHotelResponseDto>> GetById(int id);
